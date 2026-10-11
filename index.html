@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#191919">
+<title>Crazy Toys | متجر الألعاب</title>
+<style>
+:root{--yellow:#ffd43b;--ink:#191919;--muted:#6b7280;--bg:#f6f7f9;--card:#fff;--line:#e5e7eb;--green:#128c4a}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:11px 14px;font-weight:700}a{color:inherit}.top{background:var(--ink);color:#fff;padding:16px max(16px,calc((100% - 1150px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.brand{font-size:25px;font-weight:900;color:var(--yellow);letter-spacing:.4px}.tag{font-size:12px;color:#ddd;margin-top:5px}.top-actions{display:flex;gap:8px;flex-wrap:wrap}.btn-yellow{background:var(--yellow);color:var(--ink)}.btn-dark{background:#333;color:#fff}.btn-green{background:var(--green);color:white}.btn-light{background:#f0f1f3;color:var(--ink)}.wrap{max-width:1150px;margin:auto;padding:20px 16px}.hero{background:linear-gradient(120deg,#202020,#363636);color:white;border-radius:18px;padding:28px;margin-bottom:20px;position:relative;overflow:hidden}.hero:after{content:"★";position:absolute;left:24px;top:-35px;font-size:150px;color:#ffd43b20}.hero h1{font-size:clamp(24px,4vw,38px);margin:0 0 10px}.hero p{margin:0;color:#e7e7e7;line-height:1.8}.tools{display:grid;grid-template-columns:1fr 210px;gap:10px;margin:18px 0}.field{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:10px;background:white;min-width:0}.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0}.section-title h2{margin:0;font-size:21px}.count{color:var(--muted);font-size:13px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.product{background:var(--card);border:1px solid var(--line);border-radius:15px;overflow:hidden;display:flex;flex-direction:column;min-width:0}.photo{height:170px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}.photo img{width:100%;height:100%;object-fit:contain}.placeholder{font-size:48px}.pbody{padding:13px;display:flex;flex-direction:column;gap:8px;flex:1}.pname{font-weight:800;line-height:1.5}.meta{color:var(--muted);font-size:12px}.price{font-size:20px;font-weight:900}.pactions{display:flex;gap:7px;margin-top:auto}.pactions button{flex:1;padding:10px 7px;font-size:13px}.empty{padding:30px;text-align:center;color:var(--muted);background:white;border:1px dashed var(--line);border-radius:12px;grid-column:1/-1}.footer{text-align:center;color:var(--muted);padding:25px 10px;font-size:12px}.modal-back{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:14px;z-index:10}.modal-back.show{display:flex}.modal{width:min(650px,100%);max-height:90vh;overflow:auto;background:white;border-radius:18px;padding:20px;box-shadow:0 20px 60px #0003}.modal h2{margin:0 0 14px}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.close{background:#eee;padding:8px 12px}.cart-list{display:flex;flex-direction:column;gap:10px}.cart-row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px}.qty{display:flex;align-items:center;gap:8px}.qty button{padding:5px 10px;background:#eee}.total{display:flex;justify-content:space-between;font-size:19px;font-weight:900;padding:15px 0}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.form-grid .full{grid-column:1/-1}.label{display:block;font-size:13px;font-weight:700;margin:10px 0 6px}.note{background:#fff8dc;border:1px solid #ffe58a;border-radius:10px;padding:12px;font-size:13px;line-height:1.7}.admin-list{display:flex;flex-direction:column;gap:8px;margin-top:15px}.admin-item{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--line);border-radius:10px;padding:10px}.hidden{display:none!important}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:650px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo{height:140px}.tools{grid-template-columns:1fr}.hero{padding:22px}.brand{font-size:22px}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.wrap{padding:14px 12px}.top{padding:14px 12px}}@media(max-width:360px){.grid{grid-template-columns:1fr}.photo{height:190px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div><div class="brand">CRAZY TOYS</div><div class="tag">عالم الألعاب والدراجات والسكوترات</div></div>
+  <div class="top-actions">
+    <button class="btn-yellow" id="cartOpen">🛒 السلة <span id="cartCount">0</span></button>
+    <button class="btn-dark" id="adminOpen">إدارة المنتجات 🔐</button>
+  </div>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <h1>اكتشف عالم Crazy Toys</h1>
+    <p>اختار منتجاتك المفضلة، أضفها إلى السلة، وابعت طلبك مباشرة على واتساب.</p>
+  </section>
+  <div class="tools">
+    <input id="search" class="field" type="search" placeholder="ابحث باسم المنتج أو الكود…">
+    <select id="category" class="field"><option value="">كل الأقسام</option></select>
+  </div>
+  <div class="section-title"><h2>منتجاتنا</h2><span id="productCount" class="count"></span></div>
+  <section id="products" class="grid" aria-live="polite"></section>
+  <div class="footer">Crazy Toys · الأسعار بالجنيه المصري · تأكيد الطلب والتوصيل يتم عبر واتساب</div>
+</main>
+
+<div class="modal-back" id="cartModal"><section class="modal">
+  <div class="modal-head"><h2>سلة المشتريات</h2><button class="close" data-close="cartModal">إغلاق ✕</button></div>
+  <div id="cartItems" class="cart-list"></div>
+  <div class="total"><span>الإجمالي</span><span id="cartTotal">0 ج.م</span></div>
+  <label class="label" for="customerName">اسم العميل (اختياري)</label><input id="customerName" class="field" placeholder="اكتب اسمك">
+  <label class="label" for="customerAddress">العنوان أو المنطقة (اختياري)</label><input id="customerAddress" class="field" placeholder="لتنسيق التوصيل">
+  <button id="checkout" class="btn-green" style="width:100%;margin-top:12px">إرسال الطلب عبر واتساب</button>
+  <p class="meta">سيتم فتح واتساب برسالة جاهزة لمراجعتها وإرسالها بنفسك.</p>
+</section></div>
+
+<div class="modal-back" id="adminModal"><section class="modal">
+  <div class="modal-head"><h2>إدارة المنتجات</h2><button class="close" data-close="adminModal">إغلاق ✕</button></div>
+  <div id="pinPanel">
+    <p>أدخل الرقم السري لفتح نموذج إضافة المنتجات.</p>
+    <label class="label" for="pin">الرقم السري</label><input id="pin" class="field" type="password" inputmode="numeric" placeholder="الرقم السري">
+    <button id="pinSubmit" class="btn-yellow" style="margin-top:10px;width:100%">دخول</button>
+    <p id="pinError" style="color:#b91c1c" role="alert"></p>
+  </div>
+  <div id="adminPanel" class="hidden">
+    <div class="note"><b>تنبيه مهم:</b> هذه نسخة مجانية ثابتة. المنتجات التي تضيفها تُحفظ في هذا المتصفح فقط، ولا تظهر تلقائيًا للزوار الآخرين. الرقم السري داخل كود الموقع ليس حماية قوية ويمكن للمطورين العثور عليه. لا تستخدمه لحماية بيانات حساسة.</div>
+    <h3>إضافة منتج جديد</h3>
+    <form id="productForm">
+      <div class="form-grid">
+        <div><label class="label" for="pcode">كود المنتج *</label><input id="pcode" class="field" required placeholder="مثال: 10189"></div>
+        <div><label class="label" for="pname">اسم المنتج *</label><input id="pname" class="field" required placeholder="اسم المنتج"></div>
+        <div><label class="label" for="pprice">السعر بالجنيه *</label><input id="pprice" class="field" required type="number" min="0" step="0.01" placeholder="335"></div>
+        <div><label class="label" for="pcat">القسم</label><select id="pcat" class="field"><option>دراجات</option><option>سكوترات</option><option>ألعاب</option><option>سيارات أطفال</option><option>أخرى</option></select></div>
+        <div class="full"><label class="label" for="pimage">رابط صورة المنتج (اختياري)</label><input id="pimage" class="field" type="url" placeholder="https://..."></div>
+        <div class="full"><label class="label" for="pdesc">وصف مختصر (اختياري)</label><input id="pdesc" class="field" placeholder="وصف المنتج"></div>
+      </div>
+      <button class="btn-yellow" type="submit" style="width:100%;margin-top:14px">حفظ المنتج</button>
+    </form>
+    <div class="section-title"><h3>المنتجات الحالية</h3><span id="adminCount" class="count"></span></div>
+    <div id="adminList" class="admin-list"></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:15px">
+      <button id="exportBtn" class="btn-dark">تصدير المنتجات JSON</button>
+      <button id="resetBtn" class="btn-light">استعادة المنتجات التجريبية</button>
+    </div>
+    <p class="meta">لجعل المنتجات الجديدة ظاهرة لكل الزوار على النسخة الثابتة: صدّر ملف JSON، حدّث ملف المنتجات بالموقع، ثم أعد النشر. للحفظ المركزي الفوري نحتاج قاعدة بيانات وخلفية آمنة.</p>
+  </div>
+</section></div>
+<script src="products.js"></script>
+<script>
+(() => {
+  // Demo PIN only. Change it before testing; client-side PIN is NOT secure authentication.
+  const ADMIN_PIN = "2468";
+  const WA_NUMBER = "201208555568";
+  const STORE_KEY = "crazyToysProducts_v1";
+  const CART_KEY = "crazyToysCart_v1";
+  const $ = id => document.getElementById(id);
+  const money = n => new Intl.NumberFormat("ar-EG",{maximumFractionDigits:2}).format(Number(n)||0) + " ج.م";
+  let products = loadProducts();
+  let cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+  let adminUnlocked = false;
+
+  function loadProducts(){
+    try { const saved = localStorage.getItem(STORE_KEY); if(saved) return JSON.parse(saved); } catch(e){}
+    return (window.CRAZY_TOYS_PRODUCTS || []).map(p=>({...p}));
+  }
+  function saveProducts(){ localStorage.setItem(STORE_KEY, JSON.stringify(products)); }
+  function saveCart(){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartCount(); }
+  function escapeHTML(s){ return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+  function renderCategories(){
+    const select=$("category"), old=select.value;
+    const cats=[...new Set(products.map(p=>p.category||"أخرى"))].sort();
+    select.innerHTML='<option value="">كل الأقسام</option>'+cats.map(c=>`<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`).join("");
+    if(cats.includes(old)) select.value=old;
+  }
+  function renderProducts(){
+    const q=$("search").value.trim().toLowerCase(), cat=$("category").value;
+    const shown=products.filter(p=>(!cat||(p.category||"أخرى")===cat)&&[p.name,p.code,p.description,p.category].some(v=>String(v||"").toLowerCase().includes(q)));
+    $("productCount").textContent=`عرض ${shown.length} من ${products.length} منتج`;
+    $("products").innerHTML=shown.length?shown.map(p=>`
+      <article class="product">
+        <div class="photo">${p.image?`<img loading="lazy" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=&quot;placeholder&quot;>🧸</div>'">`:'<div class="placeholder">🧸</div>'}</div>
+        <div class="pbody"><div class="pname">${escapeHTML(p.name)}</div><div class="meta">الكود: ${escapeHTML(p.code)} · ${escapeHTML(p.category||"أخرى")}</div>${p.description?`<div class="meta">${escapeHTML(p.description)}</div>`:""}<div class="price">${money(p.price)}</div><div class="pactions"><button class="btn-yellow" data-add="${escapeHTML(p.code)}">أضف للسلة</button></div></div>
+      </article>`).join(""):'<div class="empty">لا توجد منتجات مطابقة للبحث.</div>';
+    renderCategories();
+  }
+  function updateCartCount(){ $("cartCount").textContent=cart.reduce((s,i)=>s+i.qty,0); }
+  function cartProducts(){return cart.map(i=>({...i,product:products.find(p=>String(p.code)===String(i.code))})).filter(i=>i.product);}
+  function renderCart(){
+    const rows=cartProducts();
+    $("cartItems").innerHTML=rows.length?rows.map(i=>`<div class="cart-row"><div><b>${escapeHTML(i.product.name)}</b><div class="meta">كود ${escapeHTML(i.code)} · ${money(i.product.price)} للقطعة</div><button class="btn-light" data-remove="${escapeHTML(i.code)}" style="margin-top:8px;padding:6px 9px">حذف</button></div><div class="qty"><button data-qty="${escapeHTML(i.code)}" data-delta="-1">−</button><b>${i.qty}</b><button data-qty="${escapeHTML(i.code)}" data-delta="1">+</button></div></div>`).join(""):'<div class="empty">السلة فارغة. أضف بعض المنتجات أولًا.</div>';
+    const total=rows.reduce((s,i)=>s+Number(i.product.price)*i.qty,0);
+    $("cartTotal").textContent=money(total); updateCartCount();
+  }
+  function addToCart(code){const p=products.find(p=>String(p.code)===String(code));if(!p)return;const row=cart.find(i=>String(i.code)===String(code));if(row)row.qty++;else cart.push({code:p.code,qty:1});saveCart();renderCart();}
+  function openModal(id){$(id).classList.add("show");}
+  function closeModal(id){$(id).classList.remove("show");}
+  $("products").addEventListener("click",e=>{const b=e.target.closest("[data-add]");if(b){addToCart(b.dataset.add);b.textContent="تمت الإضافة ✓";setTimeout(()=>{if(b.isConnected)b.textContent="أضف للسلة"},900);}});
+  $("search").addEventListener("input",renderProducts); $("category").addEventListener("change",renderProducts);
+  $("cartOpen").onclick=()=>{renderCart();openModal("cartModal")};
+  $("adminOpen").onclick=()=>{openModal("adminModal");$("pin").value="";$("pinError").textContent="";if(adminUnlocked)showAdmin();};
+  document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>closeModal(b.dataset.close));
+  document.querySelectorAll(".modal-back").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)closeModal(m.id)}));
+  $("cartItems").addEventListener("click",e=>{
+    const rem=e.target.closest("[data-remove]"), qty=e.target.closest("[data-qty]");
+    if(rem)cart=cart.filter(i=>String(i.code)!==String(rem.dataset.remove));
+    if(qty){const i=cart.find(i=>String(i.code)===String(qty.dataset.qty));if(i)i.qty+=Number(qty.dataset.delta);cart=cart.filter(i=>i.qty>0);}
+    saveCart();renderCart();
+  });
+  $("checkout").onclick=()=>{
+    const rows=cartProducts();if(!rows.length){alert("السلة فارغة.");return;}
+    const total=rows.reduce((s,i)=>s+Number(i.product.price)*i.qty,0);
+    let msg="طلب جديد من متجر Crazy Toys%0A";
+    const lines=["طلب جديد من متجر Crazy Toys","--------------------",...rows.map(i=>`${i.product.name} | كود: ${i.code} | الكمية: ${i.qty} | سعر القطعة: ${money(i.product.price)} | الإجمالي: ${money(Number(i.product.price)*i.qty)}`),"--------------------",`إجمالي المنتجات: ${money(total)}`];
+    const name=$("customerName").value.trim(), address=$("customerAddress").value.trim();
+    if(name)lines.push(`اسم العميل: ${name}`);if(address)lines.push(`العنوان/المنطقة: ${address}`);
+    lines.push("يرجى تأكيد توافر المنتجات وتكلفة التوصيل.");
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`,"_blank","noopener");
+  };
+  $("pinSubmit").onclick=()=>{
+    if($("pin").value===ADMIN_PIN){adminUnlocked=true;$("pinPanel").classList.add("hidden");showAdmin();}
+    else $("pinError").textContent="الرقم السري غير صحيح.";
+  };
+  $("pin").addEventListener("keydown",e=>{if(e.key==="Enter")$("pinSubmit").click()});
+  function showAdmin(){$("pinPanel").classList.add("hidden");$("adminPanel").classList.remove("hidden");renderAdminList();}
+  $("productForm").addEventListener("submit",e=>{
+    e.preventDefault();
+    const code=$("pcode").value.trim(), name=$("pname").value.trim(), price=Number($("pprice").value);
+    if(products.some(p=>String(p.code)===code)){alert("هذا الكود موجود بالفعل. استخدم كودًا مختلفًا.");return;}
+    const p={code,name,price,category:$("pcat").value,image:$("pimage").value.trim(),description:$("pdesc").value.trim()};
+    products.unshift(p);saveProducts();renderProducts();renderAdminList();e.target.reset();alert("تم حفظ المنتج في هذا المتصفح.");
+  });
+  function renderAdminList(){
+    $("adminCount").textContent=`${products.length} منتج`;
+    $("adminList").innerHTML=products.length?products.map(p=>`<div class="admin-item"><div><b>${escapeHTML(p.name)}</b><div class="meta">كود ${escapeHTML(p.code)} · ${money(p.price)}</div></div><button class="btn-light" data-delete="${escapeHTML(p.code)}">حذف</button></div>`).join(""):'<div class="empty">لا توجد منتجات.</div>';
+  }
+  $("adminList").addEventListener("click",e=>{const b=e.target.closest("[data-delete]");if(!b)return;if(confirm("حذف المنتج "+b.dataset.delete+"؟")){products=products.filter(p=>String(p.code)!==String(b.dataset.delete));cart=cart.filter(i=>String(i.code)!==String(b.dataset.delete));saveProducts();saveCart();renderProducts();renderAdminList();}});
+  $("exportBtn").onclick=()=>{
+    const blob=new Blob([JSON.stringify(products,null,2)],{type:"application/json"});
+    const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="crazy-toys-products.json";a.click();URL.revokeObjectURL(url);
+  };
+  $("resetBtn").onclick=()=>{if(confirm("استعادة المنتجات التجريبية؟ سيتم حذف المنتجات المحفوظة محليًا.")){localStorage.removeItem(STORE_KEY);products=(window.CRAZY_TOYS_PRODUCTS||[]).map(p=>({...p}));renderProducts();renderAdminList();}};
+  renderProducts();updateCartCount();
+})();
+</script>
+</body>
+</html>
